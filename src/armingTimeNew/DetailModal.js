@@ -33,7 +33,7 @@ function DetailModal(props) {
 
   return (
     <Modal
-      title="剧烈运动重置"
+      title="修改时间"
       visible={visible}
       footer={
         <Button type="primary" onClick={() => handleOk(updateValue)}>
@@ -43,11 +43,6 @@ function DetailModal(props) {
       onCancel={handleCancel}
       destroyOnClose
     >
-      <Descriptions title="基本参数">
-        <Descriptions.Item>
-          当检测到剧烈运动持续一定时间后，触发报警。
-        </Descriptions.Item>
-      </Descriptions>
       <FormContainer
         categoryName=""
         setForm={(form) => {

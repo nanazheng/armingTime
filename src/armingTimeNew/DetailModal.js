@@ -32,40 +32,38 @@ function DetailModal(props) {
   }, [day, timelineIndex, visible]);
 
   return (
-    <div>
-      <Modal
-        title="剧烈运动重置"
-        visible={visible}
-        footer={
-          <Button type="primary" onClick={() => handleOk(updateValue)}>
-            保存
-          </Button>
-        }
-        onCancel={handleCancel}
-        destroyOnClose
-      >
-        <Descriptions title="基本参数">
-          <Descriptions.Item>
-            当检测到剧烈运动持续一定时间后，触发报警。
-          </Descriptions.Item>
-        </Descriptions>
-        <FormContainer
-          categoryName=""
-          setForm={(form) => {
-            setUpdateValue(form);
-          }}
-          startTime={startTime}
-          endTime={endTime}
-          prevHour={prevHour}
-          prevMin={prevMin}
-          nextHour={nextHour}
-          nextMin={nextMin}
-          timelineIndex={timelineIndex}
-          timelinersLength={time_liners.length}
-          data={selectedTimeline}
-        />
-      </Modal>
-    </div>
+    <Modal
+      title="剧烈运动重置"
+      visible={visible}
+      footer={
+        <Button type="primary" onClick={() => handleOk(updateValue)}>
+          保存
+        </Button>
+      }
+      onCancel={handleCancel}
+      destroyOnClose
+    >
+      <Descriptions title="基本参数">
+        <Descriptions.Item>
+          当检测到剧烈运动持续一定时间后，触发报警。
+        </Descriptions.Item>
+      </Descriptions>
+      <FormContainer
+        categoryName=""
+        setForm={(form) => {
+          setUpdateValue(form);
+        }}
+        startTime={startTime}
+        endTime={endTime}
+        prevHour={prevHour}
+        prevMin={prevMin}
+        nextHour={nextHour}
+        nextMin={nextMin}
+        timelineIndex={timelineIndex}
+        timelinersLength={time_liners.length}
+        data={selectedTimeline}
+      />
+    </Modal>
   );
 }
 

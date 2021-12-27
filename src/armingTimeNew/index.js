@@ -23,6 +23,12 @@ class ArmingTimeNew extends Component {
   }
   getDays = (time_sliders, dayIndex) => {
     let days = this.state.days
+    const index = time_sliders.findIndex(slider => slider.border === true)
+    if(index > -1) {
+      days[dayIndex].delete = true
+    }else {
+      days[dayIndex].delete = false
+    }
     days[dayIndex].timelines = time_sliders
     this.setState({
       days

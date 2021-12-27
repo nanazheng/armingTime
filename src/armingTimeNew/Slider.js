@@ -92,6 +92,7 @@ class Slider extends Component {
       startMin,
       endHour,
       endMin,
+      showTime: true,
     }
     //过滤 length <=0的slider
     time_sliders = time_sliders.filter(slider => slider.length > 0)
@@ -99,13 +100,20 @@ class Slider extends Component {
     //   return a.offset - b.offset;
     // }); //排序，方便限制modal的时间选择
     getDays(time_sliders, dayIndex)
-    this.setState({
-      timelines: time_sliders,
-      toolTip: false
-    })
+    // this.setState({
+    //   timelines: time_sliders,
+    //   toolTip: false
+    // })
   }
 
   end = () => {
+    const { day, getDays, dayIndex } = this.props;
+    let time_sliders = day.timelines;
+    const index = time_sliders.findIndex(slider => slider.showTime)
+    if(index > -1) {
+      time_sliders[index].showTime = false
+    }
+    getDays(time_sliders, dayIndex)
     // removeEvents
     this.onMouseMoveListener.remove();
     this.onMouseUpListener.remove();
@@ -196,7 +204,6 @@ class Slider extends Component {
         const endMin = parseInt(endTimeString[1]);
         const offset = (startHour * 60 + startMin) / 2
         const length = (endHour * 60 + endMin) / 2 - offset
-        console.log('time_sliders[timelineIndex]', time_sliders[timelineIndex])
         time_sliders[timelineIndex] = {
           ...time_sliders[timelineIndex],
           offset,
@@ -210,7 +217,6 @@ class Slider extends Component {
           duration: values.duration ? values.duration : undefined,
           threshold: values.threshold ? values.threshold : undefined,
         }
-        console.log('time_sliders', time_sliders)
         getDays(time_sliders, dayIndex);
         this.setState({
           visible: false,
@@ -285,7 +291,7 @@ class Slider extends Component {
             okText="确定"
             cancelText="取消"
           >
-            <a className={_.isEmpty(day.timelines) || timelineIndex === null ? "disabled" : 'rc-del'}>删除</a>
+            <a className={_.isEmpty(day.timelines) || !day.delete ? "disabled" : 'rc-del'}>删除</a>
           </Popconfirm>
         </div>
         <DetailModal

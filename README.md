@@ -1,6 +1,6 @@
 # 插件效果
 
-![GIF 2021-12-22 13-49-05](https://user-images.githubusercontent.com/18041700/147051826-d6af2110-5896-484f-ac4a-007fb7506329.gif)
+![GIF 2022-4-18 9-32-20](https://user-images.githubusercontent.com/18041700/163740967-cb0ca6e9-92cc-4cb1-b8df-10c60daaee97.gif)
 
 ## 参考
 

@@ -1,39 +1,38 @@
-import React, { Component } from 'react'
-import { Checkbox, Button, Popconfirm, Icon, message } from 'antd'
-import Slider from './Slider'
-import _ from 'lodash'
-import "../index.css"
+import React, { Component } from "react";
+import { Checkbox, Button, Popconfirm, Icon, message } from "antd";
+import Slider from "./Slider";
+import _ from "lodash";
+import "../index.css";
 
 class ArmingTimeNew extends Component {
-  constructor(props) {
-    super()
-    this.state = {
-      days: [
-        { day: "周一", timelines: [], checked: false, delete: false },
-        { day: "周二", timelines: [], checked: false, delete: false },
-        { day: "周三", timelines: [], checked: false, delete: false },
-        { day: "周四", timelines: [], checked: false, delete: false },
-        { day: "周五", timelines: [], checked: false, delete: false },
-        { day: "周六", timelines: [], checked: false, delete: false },
-        { day: "周日", timelines: [], checked: false, delete: false },
-      ],
-      indeterminate: false, //控制CheckBoxAll的样式
-      checkAll: false,
-    }
-  }
+  state = {
+    days: [
+      { day: "周一", timelines: [], checked: false, delete: false },
+      { day: "周二", timelines: [], checked: false, delete: false },
+      { day: "周三", timelines: [], checked: false, delete: false },
+      { day: "周四", timelines: [], checked: false, delete: false },
+      { day: "周五", timelines: [], checked: false, delete: false },
+      { day: "周六", timelines: [], checked: false, delete: false },
+      { day: "周日", timelines: [], checked: false, delete: false },
+    ],
+    indeterminate: false, //控制CheckBoxAll的样式
+    checkAll: false,
+  };
+
   getDays = (time_sliders, dayIndex) => {
-    let days = this.state.days
-    const index = time_sliders.findIndex(slider => slider.border === true)
-    if(index > -1) {
-      days[dayIndex].delete = true
-    }else {
-      days[dayIndex].delete = false
+    let days = this.state.days;
+    const index = time_sliders.findIndex((slider) => slider.border === true);
+    if (index > -1) {
+      days[dayIndex].delete = true;
+    } else {
+      days[dayIndex].delete = false;
     }
-    days[dayIndex].timelines = time_sliders
+    days[dayIndex].timelines = time_sliders;
     this.setState({
-      days
-    })
-  }
+      days,
+    });
+  };
+
   selectAll = (e) => {
     let days = this.state.days;
     days.map((day) => {
@@ -49,7 +48,8 @@ class ArmingTimeNew extends Component {
       indeterminate: false,
       checkAll: e.target.checked,
     });
-  }
+  };
+
   selectSingle = (index) => {
     let days = this.state.days;
     let indeterminate = false;
@@ -69,13 +69,16 @@ class ArmingTimeNew extends Component {
       indeterminate,
       checkAll,
     });
-  }
+  };
+
   batchDel = () => {
-    let days = this.state.days, del = false;
+    let days = this.state.days,
+      del = false;
     days.map((day) => {
       if (day.checked) {
         del = true;
         day.timelines = [];
+        day.checked = false;
       }
     });
     if (!del) {
@@ -83,11 +86,13 @@ class ArmingTimeNew extends Component {
     }
     this.setState({
       days,
+      indeterminate: false,
+      checkAll: false,
     });
-  }
-  save = () => {
+  };
 
-  }
+  save = () => {};
+
   render() {
     const { days, indeterminate, checkAll } = this.state;
     return (
@@ -126,7 +131,7 @@ class ArmingTimeNew extends Component {
                 dayIndex={i}
                 getDays={this.getDays}
               />
-            )
+            );
           })}
         </div>
         <div className="rc-save">
@@ -135,7 +140,7 @@ class ArmingTimeNew extends Component {
           </Button>
         </div>
       </>
-    )
+    );
   }
 }
 

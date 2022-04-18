@@ -1,4 +1,4 @@
-import { Tooltip } from 'antd'
+import { Tooltip } from "antd";
 
 const Track = ({
   className,
@@ -29,15 +29,13 @@ const Track = ({
       {slider.showTime && (
         <div style={{ position: "relative" }}>
           <Tooltip title={slider.startTime} defaultVisible={true}>
-            <span className='rc-track-time' style={{ left: 0 }}></span>
+            <span className="rc-track-time" style={{ left: 0 }}></span>
           </Tooltip>
           <Tooltip title={slider.endTime} defaultVisible={true}>
-            <span className='rc-track-time' style={{ left: length - 1 }}></span>
+            <span className="rc-track-time" style={{ left: length - 1 }}></span>
           </Tooltip>
         </div>
       )}
-      
-      
     </div>
   );
 };

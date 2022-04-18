@@ -8,8 +8,8 @@ function DetailModal(props) {
   const { visible, handleOk, handleCancel, day, timelineIndex } = props;
   const time_liners = day.timelines;
   const selectedTimeline = time_liners[timelineIndex];
-  const startTime = selectedTimeline?.startTime
-  const endTime = selectedTimeline?.endTime
+  const startTime = selectedTimeline?.startTime;
+  const endTime = selectedTimeline?.endTime;
   const [updateValue, setUpdateValue] = useState(null);
   const [prevHour, setPrevHour] = useState("");
   const [prevMin, setPrevMin] = useState("");
@@ -19,15 +19,16 @@ function DetailModal(props) {
   useEffect(() => {
     if (timelineIndex === null || !visible) return;
     //提取当前时间条的上一个时间条的endTime和下一个时间条的startTime
-    const prevIndex = timelineIndex - 1 >= 0 ? timelineIndex - 1 : undefined
-    const nextIndex = timelineIndex + 1 < time_liners.length ? timelineIndex + 1 : undefined
+    const prevIndex = timelineIndex - 1 >= 0 ? timelineIndex - 1 : undefined;
+    const nextIndex =
+      timelineIndex + 1 < time_liners.length ? timelineIndex + 1 : undefined;
     if (prevIndex !== undefined) {
-      setPrevHour(time_liners[prevIndex].endHour)
-      setPrevMin(time_liners[prevIndex].endMin)
+      setPrevHour(time_liners[prevIndex].endHour);
+      setPrevMin(time_liners[prevIndex].endMin);
     }
     if (nextIndex !== undefined) {
-      setNextHour(time_liners[nextIndex].startHour)
-      setNextMin(time_liners[nextIndex].startMin)
+      setNextHour(time_liners[nextIndex].startHour);
+      setNextMin(time_liners[nextIndex].startMin);
     }
   }, [day, timelineIndex, visible]);
 

@@ -3,43 +3,41 @@ import { Button, Checkbox, Row, Col } from "antd";
 import _ from "lodash";
 
 class CopyContent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      indeterminate: true,
-      checkAll: false,
-      copyDays: [
-        {
-          day: "周一",
-          checked: false,
-        },
-        {
-          day: "周二",
-          checked: false,
-        },
-        {
-          day: "周三",
-          checked: false,
-        },
-        {
-          day: "周四",
-          checked: false,
-        },
-        {
-          day: "周五",
-          checked: false,
-        },
-        {
-          day: "周六",
-          checked: false,
-        },
-        {
-          day: "周日",
-          checked: false,
-        },
-      ],
-    };
-  }
+  state = {
+    indeterminate: true,
+    checkAll: false,
+    copyDays: [
+      {
+        day: "周一",
+        checked: false,
+      },
+      {
+        day: "周二",
+        checked: false,
+      },
+      {
+        day: "周三",
+        checked: false,
+      },
+      {
+        day: "周四",
+        checked: false,
+      },
+      {
+        day: "周五",
+        checked: false,
+      },
+      {
+        day: "周六",
+        checked: false,
+      },
+      {
+        day: "周日",
+        checked: false,
+      },
+    ],
+  };
+
   onCheckAllChange = (value) => {
     let copyDays = this.state.copyDays;
     copyDays.map((item) => {
@@ -74,18 +72,18 @@ class CopyContent extends Component {
   };
 
   confirm = () => {
-    let copyDays = this.state.copyDays
+    let copyDays = this.state.copyDays;
     const { handleCopySave, dayIndex } = this.props;
-    let copyIndexs = []
+    let copyIndexs = [];
     copyDays.map((item, i) => {
       if (item.checked && i !== dayIndex) {
-        copyIndexs.push(i)
-        item.checked = false
+        copyIndexs.push(i);
+        item.checked = false;
       }
     });
     this.setState({
-      copyDays
-    })
+      copyDays,
+    });
     handleCopySave(copyIndexs);
   };
 

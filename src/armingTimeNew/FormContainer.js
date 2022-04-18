@@ -30,10 +30,7 @@ function FormContainer(props) {
 
   return (
     <div>
-      <Form
-        {...formItemLayout} 
-        className="login-form"
-      >
+      <Form {...formItemLayout} className="login-form">
         <Form.Item label="布防时间">
           {getFieldDecorator("time", {
             rules: [{ required: true, message: "" }],
